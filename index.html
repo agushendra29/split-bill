@@ -18,18 +18,19 @@
 
     body {
       font-family: "Open Sans", sans-serif;
-      background: #f4f7fb;
+      background: linear-gradient(135deg, #eef7ff 0%, #f8fbff 45%, #ffffff 100%);
       color: #1f2937;
-      padding: 15px;
+      padding: 10px;
     }
 
     .container {
       max-width: 950px;
       margin: 0 auto;
-      background: #ffffff;
-      border-radius: 24px;
-      padding: 40px;
-      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.06);
+      background: rgba(255,255,255,0.95);
+      border-radius: 28px;
+      padding: 15px;
+      box-shadow: 0 25px 60px rgba(15, 23, 42, 0.08);
+      border: 1px solid rgba(255,255,255,0.8);
     }
 
     .header {
@@ -38,6 +39,9 @@
     }
 
     .header h1 {
+      background: linear-gradient(90deg, #2563eb, #06b6d4);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
       font-size: 34px;
       font-weight: 700;
       color: #111827;
@@ -68,8 +72,8 @@
     }
 
     .menu-item:hover {
-      border-color: #22c55e;
-      box-shadow: 0 10px 24px rgba(34, 197, 94, 0.08);
+      border-color: #60a5fa;
+      box-shadow: 0 14px 28px rgba(37, 99, 235, 0.08);
     }
 
     .menu-left {
@@ -93,8 +97,8 @@
     }
 
     .menu-info p {
-      font-size: 12px;
-      color: #16a34a;
+      font-size: 14px;
+      color: #2563eb;
       font-weight: 600;
     }
 
@@ -134,7 +138,7 @@
     }
 
     button {
-      background: #22c55e;
+      background: linear-gradient(90deg, #2563eb, #06b6d4);
       color: white;
       border: none;
       padding: 15px 32px;
@@ -146,7 +150,7 @@
     }
 
     button:hover {
-      background: #16a34a;
+      background: linear-gradient(90deg, #1d4ed8, #0891b2);
       transform: translateY(-2px);
     }
 
@@ -154,26 +158,26 @@
       margin-top: 28px;
       padding: 28px;
       border-radius: 18px;
-      background: #f0fdf4;
-      border: 1px solid #bbf7d0;
+      background: linear-gradient(135deg, #eff6ff, #ecfeff);
+      border: 1px solid #bfdbfe;
       text-align: center;
     }
 
     .total-box h2 {
       font-size: 18px;
-      color: #166534;
+      color: #1d4ed8;
       margin-bottom: 10px;
     }
 
     .total-price {
       font-size: 30px;
       font-weight: 700;
-      color: #15803d;
+      color: #0f172a;
     }
 
     @media (max-width: 768px) {
       .container {
-        padding: 24px;
+        padding: 15px;
       }
 
       .menu-item {
@@ -193,8 +197,8 @@
 <div class="container">
 
   <div class="header">
-    <h1><b>Split Bill <p style="padding-top:10px;padding-bottom:10px;font-size:10px;">Maap kali ini gak keluar Excel karena gak tau kalian pada pesan apa jadi Self Service aja🤣🤣🤣🤣</p></b></h1>
-    <p>Pilih checkbox, lalu isi berapa orang sharing jika sendiri maka tulis Sharing 1</p>
+    <h1>Split Ala-Ala ✨</h1>
+    <p style="font-size: 10px;color:red;"><i>**Centang yang dipesan, jika tidak sharing maka isi sharing = 1</i></p> <p style="padding-top:4px;padding-bottom:10px;font-size:10px;">*Kali ini gak keluar Excel karena gak tau kalian pesan apa jadi tolong Self Service aja🤣🤣🤣*</p>
   </div>
 
   <div class="menu-list">
@@ -278,7 +282,7 @@
   </div>
 
   <div class="total-box" id="hasil">
-    <h2></h2>
+    <h2><i>Total Bill</i></h2>
     <div class="total-price">Rp 0</div>
   </div>
 
@@ -307,6 +311,7 @@ function hitungTotal() {
   const grandTotal = total + pajak;
 
   document.getElementById('hasil').innerHTML = `
+    <h2>Total Bill</h2>
     <p style="margin-bottom:8px; color:#166534; font-weight:600;">
       Subtotal: Rp ${Math.round(total).toLocaleString('id-ID')}
     </p>
