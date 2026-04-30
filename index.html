@@ -295,6 +295,7 @@ function hitungTotal() {
   const sharings = document.querySelectorAll('.sharing');
 
   let total = 0;
+  let detailHTML = "";
 
   menus.forEach((menu, index) => {
     if (menu.checked) {
@@ -304,6 +305,18 @@ function hitungTotal() {
 
       const subtotal = (harga * qty) / sharing;
       total += subtotal;
+
+      detailHTML += `
+        <div style="display:flex; justify-content:space-between; gap:10px; padding:10px 0; border-bottom:1px solid #dbeafe; font-size:14px;">
+          <div>
+            <strong>${menu.closest('.menu-item').querySelector('.menu-info h3').innerText}</strong><br>
+            <span style="font-size:12px; color:#64748b;">Qty: ${qty} • Sharing: ${sharing}</span>
+          </div>
+          <div style="font-weight:600; color:#1d4ed8;">
+            Rp ${Math.round(subtotal).toLocaleString('id-ID')}
+          </div>
+        </div>
+      `;
     }
   });
 
@@ -311,7 +324,12 @@ function hitungTotal() {
   const grandTotal = total + pajak;
 
   document.getElementById('hasil').innerHTML = `
-    <h2>Total Bill</h2>
+    <div style="text-align:left; margin-bottom:18px;">
+      <h3 style="margin-bottom:10px; color:#1d4ed8; font-size:16px;">Detail Pesanan</h3>
+      ${detailHTML || '<p style="color:#64748b; font-size:14px;">Belum ada menu yang dipilih</p>'}
+    </div>
+
+    <h2>Total Yang Harus Dibayar / Orang</h2>
     <p style="margin-bottom:8px; color:#166534; font-weight:600;">
       Subtotal: Rp ${Math.round(total).toLocaleString('id-ID')}
     </p>
